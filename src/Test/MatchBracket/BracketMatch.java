@@ -21,17 +21,17 @@ public class BracketMatch {
                     stack.push(expression.charAt(index));
                     break;
                 case ')':
-                    if (stack.empty()){
+                    if (stack.empty() || stack.peek()!='('){
                         return false;
                     }else stack.pop();
                     break;
                 case '}':
-                    if (stack.empty()){
+                    if (stack.empty() || stack.peek()!='{'){
                         return false;
                     }else stack.pop();
                     break;
                 case ']':
-                    if (stack.empty()){
+                    if (stack.empty() || stack.peek()!='['){
                         return false;
                     }else stack.pop();
                     break;
@@ -43,7 +43,7 @@ public class BracketMatch {
     }
 
     public static void main(String[] args) {
-        String expression = "{}{[()]";
+        String expression = "{}{[()]}";
         BracketMatch bracketMatch = new BracketMatch();
         System.out.println(bracketMatch.matching(expression));
     }
